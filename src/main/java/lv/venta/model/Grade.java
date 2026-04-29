@@ -35,13 +35,18 @@ public class Grade {
 	@Column(name = "grValue")
 	private int grvalue;
 	
-	//TODO sasaitse uz studentu
 	@ManyToOne
 	@JoinColumn(name = "Sid")
 	private Student student;
 	
-	//TODO sasaiste uz kursu
+	@ManyToOne
+	@JoinColumn(name = "Cid")
+	private Course course;
 	
-	//TODO argumenta konstruktors
+	public Grade(int grvalue, Student student, Course course) {
+		setCourse(course);
+		setGrvalue(grvalue);
+		setStudent(student);
+	}
 
 }

@@ -1,11 +1,15 @@
 package lv.venta.model;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
@@ -49,6 +53,10 @@ public class Course {
 	//joincolumn ir ar id no otras klases
 	@JoinColumn(name = "Pid")
 	private Professor professor;
+	
+	@OneToMany(mappedBy = "course")
+	@ToString.Exclude
+	private Collection<Grade> grades = new ArrayList<Grade>();
 	
 	//TODO sasaiste ar profesoru
 	public Course(String title, int creditPoints, Professor professor) {
