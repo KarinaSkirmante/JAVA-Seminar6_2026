@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Table(name = "StudentTable")
+//@Table(name = "StudentTable") , tas jaaizkkomenta, ja ir SINGLE_TABLE startegija pie mantosanas
 @Entity
 @Getter
 @Setter

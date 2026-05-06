@@ -26,7 +26,7 @@ import lv.venta.model.enums.Degree;
 @Setter
 @NoArgsConstructor
 @ToString
-@Table(name = "ProfessorTable")
+//@Table(name = "ProfessorTable"), tas jaaizkkomenta, ja ir SINGLE_TABLE startegija pie mantosanas
 @Entity
 public class Professor extends Person{
 	
