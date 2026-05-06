@@ -11,10 +11,10 @@ import lv.venta.model.enums.Degree;
 public interface IFilterService {
 
 	//iegut profesorus, kura grads ir konkretais
-	public abstract ArrayList<Professor> filterProfessorByDegree(Degree degree) throws Exception; 
+	public abstract ArrayList<Professor> filterProfessorsByDegree(Degree degree) throws Exception; 
 	
 	//iegut kursus, kurus pasniedz profesors ar konkreto id
-	public abstract ArrayList<Course> filterCoursesByPorfessorId(long id) throws Exception;
+	public abstract ArrayList<Course> filterCoursesByProfessorId(long id) throws Exception;
 	
 	//iegut visas atzimes, ja ir zinams stuenta vards un uzvards
 	public abstract ArrayList<Grade> filterGradesByStudentNameAndSurname(String name, String surname)
