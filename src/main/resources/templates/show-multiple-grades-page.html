@@ -1,0 +1,20 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+	
+
+	<table>
+		<tr th:each="tempG : ${package}">
+			<td th:text="${tempG.gid}"></td>
+			<td th:text="${tempG.grvalue}"></td>
+			<td th:text="${tempG.student.name}"></td>
+			<td th:text="${tempG.student.surname}"></td>
+			<td th:text="${tempG.course.title}"></td>
+		</tr>
+
+	</table>
+
+</body>
+
+</html>
