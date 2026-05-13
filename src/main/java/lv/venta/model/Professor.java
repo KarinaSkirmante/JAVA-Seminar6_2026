@@ -1,5 +1,9 @@
 package lv.venta.model;
 
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Collection;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
@@ -9,6 +13,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
@@ -43,14 +48,37 @@ public class Professor extends Person{
 	private Degree degree;
 
 	//mapedBy ir ar otras klases mainigo jasaasaita
-	@OneToOne(mappedBy = "professor")
+	@ManyToMany(mappedBy = "professors")
 	@ToString.Exclude
-	//@JsonIgnore, tad ja izmantojam citu priekgalsistemu, piemeram, React, Vue, Angular utt
-	private Course course;
+	private Collection<Course> courses = new ArrayList<>();
 	
 	
 	public Professor(String name, String surname, Degree degree) {
 		super(name, surname);
 		setDegree(degree);
+	}
+	
+	public void addCourse(Course inputCourse) throws Exception{
+		if(inputCourse == null) {
+			throw new Exception("Nav pareizi ievades dati");
+		}
+		
+		if(courses.contains(inputCourse)) {
+			throw new Exception(inputCourse.getTitle() + " jau eksiste profesora pasniegtaja kursu saraksta");
+		}
+		
+		courses.add(inputCourse);
+	}
+	
+	public void removeCourse(Course inputCourse) throws Exception{
+		if(inputCourse == null) {
+			throw new Exception("Nav pareizi ievades dati");
+		}
+		
+		if(!courses.contains(inputCourse)) {
+			throw new Exception(inputCourse.getTitle() + " neeksiste profesora pasniegtaja kursu saraksta");
+		}
+		
+		courses.remove(inputCourse);
 	}
 }
